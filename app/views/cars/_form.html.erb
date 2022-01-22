@@ -12,6 +12,21 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :inside_car_image %>
+    <%= form.file_field :inside_car_image %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :front_car_image %>
+    <%= form.file_field :front_car_image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :profil_view_image_car %>
+    <%= form.file_field :profil_view_image_car %>
+  </div>
+  
+  <div class="field">
     <%= form.label :marque %>
     <%= form.text_field :marque %>
   </div>
@@ -24,6 +39,11 @@
   <div class="field">
     <%= form.label :prix %>
     <%= form.number_field :prix %>
+  </div>
+
+  <div class="field">
+    <%= form.label :distance %>
+    <%= form.number_field :distance %>
   </div>
 
   <div class="actions">

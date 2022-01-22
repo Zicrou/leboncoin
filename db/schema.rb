@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_22_035951) do
+ActiveRecord::Schema.define(version: 2022_01_22_051151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,10 @@ ActiveRecord::Schema.define(version: 2022_01_22_035951) do
     t.integer "prix"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "inside_car_image"
+    t.string "front_car_image"
+    t.string "profil_view_image_car"
+    t.integer "distance"
   end
 
   create_table "users", force: :cascade do |t|
