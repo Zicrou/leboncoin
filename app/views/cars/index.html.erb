@@ -2,30 +2,20 @@
 <%#= current_user.role %>
 <h1>Cars</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Marque</th>
-      <th>Modele</th>
-      <th>Prix</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @cars.each do |car| %>
-      <tr>
-        <td><%= car.marque %></td>
-        <td><%= car.modele %></td>
-        <td><%= car.prix %></td>
-        <td><%= link_to 'Show', car %></td>
-        <td><%= link_to 'Edit', edit_car_path(car) %></td>
-        <td><%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <div class="card" style="width: 25rem;">
+      <%= image_tag car.front_car_image, width: "15%" , class:"card-img-top"  if car.front_car_image.attached? %>
+      <div class="card-body">
+        <h5 class="card-title"><%= car.marque %> <%= car.modele %> <%= car.prix %>F</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <%= link_to 'Show', car, class:"btn btn-primary" %>
+        <%= link_to 'Edit', edit_car_path(car), class:"btn btn-warning" %>
+        <%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+      </div>
+    </div>
+      
     <% end %>
-  </tbody>
-</table>
-
+  
 <br>
 
 <%= link_to 'New Car', new_car_path %>

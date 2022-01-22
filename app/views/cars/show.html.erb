@@ -1,9 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Marque:</strong>
-  <%= @car.marque %>
-</p>
+<% if @car.inside_car_image.attached? %>
+    <p>
+      <strong>Insider:</strong>
+      <%= image_tag @car.inside_car_image, width: '35%' %>
+    </p>
+<% end %>
+
+<% if @car.profil_view_image_car.attached? %>
+  <p>
+    <strong>Profil View:</strong>
+    <%= image_tag @car.profil_view_image_car, width: '35%'  %>
+  </p>
+<% end %>
+
+<% if @car.front_car_image.attached? %>
+  <p>
+    <strong>Front View:</strong>
+    <%= image_tag @car.front_car_image, width: '35%'  %>
+  </p>
+<% end %>
+
+
+
+<% if @car.inside_car_image.attached? %>
+  <p>
+    <strong>Marque:</strong>
+    <%= @car.marque %>
+  </p>
+<% end %>
+
 
 <p>
   <strong>Modele:</strong>
@@ -13,6 +39,11 @@
 <p>
   <strong>Prix:</strong>
   <%= @car.prix %>
+</p>
+
+<p>
+  <strong>Prix:</strong>
+  <%= @car.distance %>
 </p>
 
 <%= link_to 'Edit', edit_car_path(@car) %> |

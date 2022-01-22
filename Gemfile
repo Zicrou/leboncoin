@@ -65,3 +65,4 @@ gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 5.1', '>= 5.1.3'
 gem 'petergate', '~> 3.0'
+gem "image_processing", ">= 1.2"
