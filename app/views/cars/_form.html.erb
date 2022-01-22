@@ -37,6 +37,16 @@
   </div>
 
   <div class="field">
+    <%= form.label :year %>
+    <%= form.date_select :year,  { :discard_day => true} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :color %>
+    <%= form.text_field :color %>
+  </div>
+
+  <div class="field">
     <%= form.label :prix %>
     <%= form.number_field :prix %>
   </div>

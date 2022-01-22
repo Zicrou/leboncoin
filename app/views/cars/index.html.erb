@@ -4,10 +4,10 @@
 
     <% @cars.each do |car| %>
     <div class="card" style="width: 25rem;">
-      <%= image_tag car.front_car_image, width: "15%" , class:"card-img-top"  if car.front_car_image.attached? %>
+      <%= image_tag car.front_car_image, width: "" , class:"card-img-top"  if car.front_car_image.attached? %>
       <div class="card-body">
         <h5 class="card-title"><%= car.marque %> <%= car.modele %> <%= car.prix %>F</h5>
-        <p class="card-text"><%=  car.description %></p>
+        <p class="card-text"><%= car.description %></p>
         <%= link_to 'See more', car, class:"btn btn-primary" %>
         <%= link_to 'Edit', edit_car_path(car), class:"btn btn-warning" %>
         <%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>

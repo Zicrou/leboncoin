@@ -66,3 +66,5 @@ gem 'jquery-rails'
 gem 'bootstrap', '~> 5.1', '>= 5.1.3'
 gem 'petergate', '~> 3.0'
 gem "image_processing", ">= 1.2"
+gem 'coderay', '~> 1.1', '>= 1.1.3'
+gem 'redcarpet', '~> 3.5', '>= 3.5.1'
