@@ -1,21 +1,83 @@
 <p id="notice"><%= notice %></p>
 <%#= current_user.role %>
-<h1>Cars</h1>
+<h1>Research Cars</h1>
+<div style="width:75%;">
+  <%= form_for Car.new, url: cars_path, method: :get do |form| %>
+    <div style="display: flex; justify-content: space-around;">
 
-    <% @cars.each do |car| %>
-    <div class="card" style="width: 25rem;">
-      <%= image_tag car.front_car_image, width: "" , class:"card-img-top"  if car.front_car_image.attached? %>
-      <div class="card-body">
-        <h5 class="card-title"><%= car.marque %> <%= car.modele %> <%= car.prix %>F</h5>
-        <p class="card-text"><%= car.description %></p>
-        <%= link_to 'See more', car, class:"btn btn-primary" %>
-        <%= link_to 'Edit', edit_car_path(car), class:"btn btn-warning" %>
-        <%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+      <div class="form-group">
+        <%= form.label :marque_id %>
+        <%#= form.collection_select(:region_id, Region.order(:name), :id, :name,
+          {
+            include_blank: true
+          },
+          onchange: 'getIDRegion()',
+          class:"form-control"
+        ) %>
+      </div>
+
+
+      <div class="form-group departements" data-departements="<%#= @departements.to_json %>">
+        <%= form.label :model_id %>
+        <%#= form.collection_select(:departement_id, Departement.all, :id, :name,
+          {
+            include_blank: true
+          },
+          class: "form-control"
+        ) %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :distance %>
+        <%#= form.collection_select(:domaine_id, Domaine.order(:name), :id, :name,
+          {
+            include_blank: true
+          },
+          onchange: 'getIDDomaine()',
+          class: "form-control"
+        ) %>
+      </div>
+      
+      <div class="form-group metiers" data-metiers="<%#= @metiers.to_json %>">
+        <%= form.label :prix %>
+        <%#= form.collection_select(:metier_id, Metier.order(:name), :id, :name,
+          {
+            include_blank: true
+          },
+          class: "form-control"
+        ) %>
       </div>
     </div>
-      
+
+    <div style="display: flex; justify-content: center;">
+      <%= form.submit "Rechercher",  class:"form-control btn btn-primary col-md-4" %>
+    </div>
+  <% end %>
+</div>
+
+
+
+<h1>Cars RANDOMLY</h1>
+<div class="" style="display:flex;flex-flow: row wrap;justify-content: space-around;">
+    <% @cars.each do |car| %>
+      <div class="card" style="width: 25rem;margin-bottom:1rem;">
+        <%= image_tag car.front_car_image, width: "" , class:"card-img-top"  if car.front_car_image.attached? %>
+        <div class="card-body">
+          <h5 class="card-title"><%= car.marque %> <%= car.modele %> <%= car.prix %>F</h5>
+          <p class="card-text"><%= car.description %></p>
+          <%= link_to 'See more', car, class:"btn btn-primary" %>
+          <%= link_to 'Edit', edit_car_path(car), class:"btn btn-warning" %>
+          <%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+        </div>
+      </div>  
     <% end %>
   
 <br>
 
+</div>
 <%= link_to 'New Car', new_car_path %>
+
+
+
+<div></div>
+<div></div>

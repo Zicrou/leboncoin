@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Modeles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Modele</th>
+      <th>Marque</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @modeles.each do |modele| %>
+      <tr>
+        <td><%= modele.name %></td>
+        <td><%= modele.marque.name %></td>
+        <td><%= link_to 'Show', modele %></td>
+        <td><%= link_to 'Edit', edit_modele_path(modele) %></td>
+        <td><%= link_to 'Destroy', modele, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Modele', new_modele_path %>

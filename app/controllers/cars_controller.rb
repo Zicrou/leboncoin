@@ -4,7 +4,7 @@ class CarsController < ApplicationController
 
   # GET /cars
   def index
-    @cars = Car.all
+    @cars = Car.order('RANDOM()')
   end
 
   # GET /cars/1

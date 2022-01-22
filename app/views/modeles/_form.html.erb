@@ -1,0 +1,36 @@
+<div style="display:flex;justify-content: center;">
+  <%= form_with(model: modele, local: true) do |form| %>
+    <% if modele.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(modele.errors.count, "error") %> prohibited this modele from being saved:</h2>
+
+        <ul>
+        <% modele.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :marque_id %>
+      <%= form.collection_select(:marque_id, Marque.order(:name), :id, :name,
+        {
+          include_blank: true
+        },
+        onchange: 'getIDMarque()',
+        class:"form-control"
+      ) %>
+    </div>
+  <br>
+    <div class="form-group">
+      <%= form.submit class:"btn btn-primary" %>
+    </div>
+  <% end %>
+
+</div>
