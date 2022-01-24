@@ -1,2 +1,112 @@
-// Custom bootstrap variables must be set or imported *before* bootstrap.
-@import "bootstrap";
+    // Custom bootstrap variables must be set or imported *before* bootstrap.
+    @import "bootstrap";
+    .add_new_car {
+        margin-left: 12rem;
+    }
+    
+    .box {
+        display: flex;
+    }
+    
+    .box_recherche_by_marque_model {
+        width: 55%;
+        border: 4px solid #f4efef;
+        margin-left: 2rem;
+        flex-wrap: wrap
+    }
+    
+    .recherche_by_marque_model {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    
+    .submit_renitialize_recherche_marque_modele {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .submit_recherche_marque_modele {
+        margin-right: 2rem;
+    }
+    
+    .box_recherche_by_prices {
+        width: 35%;
+        border: 4px solid #f4efef;
+        margin-left: 2rem;
+    }
+    
+    .recherche_by_prices {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    
+    .prix_max {
+        width: 15%;
+        flex: 1;
+    }
+    
+    .prix_min {
+        width: 15%;
+        flex: 1;
+    }
+    
+    .button_filter_price {
+        margin: 2rem;
+        margin-left: 5rem;
+    }
+    
+    .box_car_list {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+    }
+    
+    .card_style {
+        width: 25rem;
+        margin-bottom: 1rem;
+    }
+    
+    .box_explanation {
+        display: flex;
+        flex-direction: column;
+        margin-left: 1rem;
+        padding-left: auto;
+        background-color: #ff9090a3;
+        border: 1px solid red;
+    }
+    
+    .box_upload_file {
+        width: 100%;
+        margin-left: 2rem;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    
+    .box_year_form {
+        margin: 2rem;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .car_details {
+        width: 100%;
+        margin-left: 2rem;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    
+    .description {
+        width: 100%;
+        margin-left: 2rem;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .description_text_area {
+        width: 38rem;
+        height: 18rem;
+    }

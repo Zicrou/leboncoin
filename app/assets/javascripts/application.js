@@ -14,6 +14,7 @@
 //= require popper
 //= require bootstrap
 //= require rails-ujs
+//= require car
 //= require activestorage
 //= require turbolinks
 //= require_tree .

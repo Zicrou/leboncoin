@@ -1,69 +1,75 @@
+<%= link_to 'New Car', new_car_path, class:"btn btn-outline-primary add_new_car", style:"" %>
+
 <p id="notice"><%= notice %></p>
 <%#= current_user.role %>
-<h1>Research Cars</h1>
-<div style="width:75%;">
-  <%= form_for Car.new, url: cars_path, method: :get do |form| %>
-    <div style="display: flex; justify-content: space-around;">
+  <h1>Research Cars</h1>
+<div class="box" style="">
+  <div class="box_recherche_by_marque_model" style="">
+    <%= form_for Car.new, url: research_cars_path, method: :get do |form| %>
+      <div class="recherche_by_marque_model" style="">
 
-      <div class="form-group">
-        <%= form.label :marque_id %>
-        <%#= form.collection_select(:region_id, Region.order(:name), :id, :name,
-          {
-            include_blank: true
-          },
-          onchange: 'getIDRegion()',
-          class:"form-control"
-        ) %>
+        <div class="form-group col-md-3">
+          <%= form.label :marque_id %>
+          <%= form.collection_select(:marque_id, Marque.order(:name), :id, :name,
+              {
+                include_blank: true
+              },
+              onchange: 'getIDMarque()',
+              class:"form-control"
+          ) %>
+        </div>
+
+
+        <div class="form-group col-md-3 departements" data-departements="<%#= @departements.to_json %>">
+          <%= form.label :modele_id %>
+          <%= form.collection_select(:modele_id, Modele.order(:name), :id, :name,
+              {
+                include_blank: true
+              },
+              #onchange: 'getIDMarque()',
+              class:"form-control"
+          ) %>
+        </div>
       </div>
 
+      <br>
 
-      <div class="form-group departements" data-departements="<%#= @departements.to_json %>">
-        <%= form.label :model_id %>
-        <%#= form.collection_select(:departement_id, Departement.all, :id, :name,
-          {
-            include_blank: true
-          },
-          class: "form-control"
-        ) %>
+      <div class="submit_renitialize_recherche_marque_modele" style=""> 
+        <div class="col-md-2 submit_recherche_marque_modele" style="">
+          <%= form.submit "Rechercher",  class:"form-control btn btn-primary" %>
+        </div>
+        <div class="col-md-2">
+          <%= link_to "Renitialiser", cars_path,  class:"form-control btn btn-outline-primary" %>
+        </div>
       </div>
+    <% end %>
+  </div>
 
-      <div class="form-group">
-        <%= form.label :distance %>
-        <%#= form.collection_select(:domaine_id, Domaine.order(:name), :id, :name,
-          {
-            include_blank: true
-          },
-          onchange: 'getIDDomaine()',
-          class: "form-control"
-        ) %>
+  <div class="box_recherche_by_prices" style="">
+    <div class="form-group recherche_by_prices" style="">
+            
+      <div class="prix_min" style="" data-departements="prix_min">
+        <%= label_tag :Min_prix %>
+        <%= number_field :prix_min, Car %> 
       </div>
-      
-      <div class="form-group metiers" data-metiers="<%#= @metiers.to_json %>">
-        <%= form.label :prix %>
-        <%#= form.collection_select(:metier_id, Metier.order(:name), :id, :name,
-          {
-            include_blank: true
-          },
-          class: "form-control"
-        ) %>
+      <div class="prix_max" style="" data-departements="prix_max">
+        <%= label_tag :Max_prix %>
+        <%= number_field :prix_max, Car %>
       </div>
     </div>
-
-    <div style="display: flex; justify-content: center;">
-      <%= form.submit "Rechercher",  class:"form-control btn btn-primary col-md-4" %>
-    </div>
-  <% end %>
+    <div class="col-md-2 button_filter_price" style="">
+        <button class="btn btn-warning" onclick=filter_price()>Filtrer</button>
+      </div>
+  </div>
 </div>
 
-
-
-<h1>Cars RANDOMLY</h1>
-<div class="" style="display:flex;flex-flow: row wrap;justify-content: space-around;">
+<h1>Cars List</h1>
+<div class="box_car_list" style="">
     <% @cars.each do |car| %>
-      <div class="card" style="width: 25rem;margin-bottom:1rem;">
+      <div class="card card_style" style="">
         <%= image_tag car.front_car_image, width: "" , class:"card-img-top"  if car.front_car_image.attached? %>
         <div class="card-body">
-          <h5 class="card-title"><%= car.marque %> <%= car.modele %> <%= car.prix %>F</h5>
+          <h5 class="card-title"><%= car.marque.name %> <%= car.modele.name %> <%= car.prix %>F</h5>
           <p class="card-text"><%= car.description %></p>
           <%= link_to 'See more', car, class:"btn btn-primary" %>
           <%= link_to 'Edit', edit_car_path(car), class:"btn btn-warning" %>
@@ -75,7 +81,6 @@
 <br>
 
 </div>
-<%= link_to 'New Car', new_car_path %>
 
 
 

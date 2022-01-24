@@ -1,67 +1,94 @@
-<%= form_with(model: car, local: true) do |form| %>
-  <% if car.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(car.errors.count, "error") %> prohibited this car from being saved:</h2>
+<div style="display:flex;">
+  <%= form_with(model: car, local: true) do |form| %>
+    <% if car.errors.any? %>
+      <div id="error_explanation" class="box_explanation" style="">
+        <h2><%= pluralize(car.errors.count, "error") %> prohibited this car from being saved:</h2>
 
-      <ul>
-      <% car.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% car.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class ="box_upload_file" style="">
+      <div class="form-group">
+        <%= form.label :inside_car_image %>
+        <%= form.file_field :inside_car_image, class:"form-control" %>
+      </div>
+      
+      <div class="form-group">
+        <%= form.label :front_car_image %>
+        <%= form.file_field :front_car_image, class:"form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :profil_view_image_car %>
+        <%= form.file_field :profil_view_image_car, class:"form-control" %>
+      </div>
+    </div>
+
+    <div class="box_year_form" style="">
+      <div class="form-group">
+        <%= form.label :year %>
+        <%= form.date_select :year,  { :discard_day => true}, class:"form-control" %>
+      </div>
+    </div>
+    
+    <div class="car_details">
+      <div class="form-group">
+        <%= form.label :marque_id %>
+        <%= form.collection_select(:marque_id, Marque.order(:name), :id, :name,
+            {
+              include_blank: true
+            },
+            onchange: 'getIDMarque()',
+            class:"form-control"
+          ) %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :modele_id %>
+        <%= form.collection_select(:modele_id, Modele.order(:name), :id, :name,
+            {
+              include_blank: true
+            },
+            #onchange: 'getIDMarque()',
+            class:"form-control"
+          ) %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :color %>
+        <%= form.text_field :color, class:"form-control",width:"5%" %>
+      </div>
+
+
+      <div class="form-group">
+        <%= form.label :prix %>
+        <%= form.number_field :prix, class:"form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :distance %>
+        <%= form.number_field :distance, class:"form-control" %>
+      </div>
+
+    </div>
+    
+  <br>
+    <div class="description" style="">
+      <div class="form-group">
+        <%= form.label :description %>
+        <%= form.text_area :description, class:"form-control description_text_area", style:"", placeholder:"Some description..." %>
+      </div>
+    </div>
+
+  <br>
+
+    <div class="form-group d-flex justify-content-center">
+      <%= form.submit class:"btn btn-primary col-md-4" %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :inside_car_image %>
-    <%= form.file_field :inside_car_image %>
-  </div>
-  
-  <div class="field">
-    <%= form.label :front_car_image %>
-    <%= form.file_field :front_car_image %>
-  </div>
-
-  <div class="field">
-    <%= form.label :profil_view_image_car %>
-    <%= form.file_field :profil_view_image_car %>
-  </div>
-  
-  <div class="field">
-    <%= form.label :marque %>
-    <%= form.text_field :marque %>
-  </div>
-
-  <div class="field">
-    <%= form.label :modele %>
-    <%= form.text_field :modele %>
-  </div>
-
-  <div class="field">
-    <%= form.label :year %>
-    <%= form.date_select :year,  { :discard_day => true} %>
-  </div>
-
-  <div class="field">
-    <%= form.label :color %>
-    <%= form.text_field :color %>
-  </div>
-
-  <div class="field">
-    <%= form.label :prix %>
-    <%= form.number_field :prix %>
-  </div>
-
-  <div class="field">
-    <%= form.label :distance %>
-    <%= form.number_field :distance %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

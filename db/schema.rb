@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_22_091358) do
+ActiveRecord::Schema.define(version: 2022_01_22_093136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,10 @@ ActiveRecord::Schema.define(version: 2022_01_22_091358) do
     t.text "description"
     t.date "year"
     t.string "color"
+    t.bigint "marque_id"
+    t.bigint "modele_id"
+    t.index ["marque_id"], name: "index_cars_on_marque_id"
+    t.index ["modele_id"], name: "index_cars_on_modele_id"
   end
 
   create_table "marques", force: :cascade do |t|
@@ -84,5 +88,7 @@ ActiveRecord::Schema.define(version: 2022_01_22_091358) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "cars", "marques"
+  add_foreign_key "cars", "modeles"
   add_foreign_key "modeles", "marques"
 end
